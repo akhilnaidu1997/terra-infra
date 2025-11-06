@@ -4,4 +4,5 @@ locals {
   mongodb = data.aws_ssm_parameter.mongodb.value
   redis = data.aws_ssm_parameter.redis.value
   rabbitmq = data.aws_ssm_parameter.rabbitmq.value
+  mysql = data.aws_ssm_parameter.mysql.value
 }

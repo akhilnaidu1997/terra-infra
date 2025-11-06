@@ -46,3 +46,12 @@ resource "aws_security_group_rule" "rabbitmq-bastion" {
   security_group_id = local.rabbitmq
   source_security_group_id =local.bastion
 }
+resource "aws_security_group_rule" "mysql-bastion" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  #cidr_blocks       = [aws_vpc.example.cidr_block]
+  security_group_id = local.mysql
+  source_security_group_id =local.bastion
+}

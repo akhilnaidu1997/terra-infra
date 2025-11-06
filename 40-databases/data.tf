@@ -29,3 +29,6 @@ data "aws_ssm_parameter" "redis" {
 data "aws_ssm_parameter" "rabbitmq" {
   name = "${var.project}-${var.environment}-rabbitmq"
 }
+data "aws_ssm_parameter" "mysql" {
+  name = "${var.project}-${var.environment}-mysql"
+}
