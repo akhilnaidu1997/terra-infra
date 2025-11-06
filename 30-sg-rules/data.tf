@@ -16,3 +16,6 @@ data "aws_ssm_parameter" "rabbitmq" {
 data "aws_ssm_parameter" "mysql" {
   name = "${var.project}-${var.environment}-mysql"
 }
+data "aws_ssm_parameter" "catalogue" {
+  name = "${var.project}-${var.environment}-catalogue"
+}
