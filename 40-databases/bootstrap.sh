@@ -24,4 +24,4 @@ else
     cd $REPO_MAIN
 fi
 
-ansible-playbook -e component=$component -e environment=$environment main.yaml
+ansible-playbook -e component=$component -e env=$environment main.yaml
