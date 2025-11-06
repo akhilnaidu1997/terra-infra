@@ -5,7 +5,12 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = [ data.aws_ssm_parameter.bastion_sg.value ]
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
 
-
+  root_block_device {
+    volume_size = 50
+    volume_type = "gp3"
+    delete_on_termination = true
+    encrypted = true
+  }
 
   tags = merge(
     local.common_tags,{

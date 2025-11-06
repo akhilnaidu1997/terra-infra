@@ -11,4 +11,5 @@ locals {
   redis = data.aws_ssm_parameter.redis.value
   rabbitmq = data.aws_ssm_parameter.rabbitmq.value
   mysql = data.aws_ssm_parameter.mysql.value
+  zone_id = data.aws_route53_zone.zone.id
 }

@@ -207,3 +207,12 @@ resource "aws_iam_instance_profile" "ec2_ssm_profile" {
   role = aws_iam_role.ec2_ssm_role.name
   depends_on = [ aws_iam_role_policy_attachment.ssm_attach ]
 }
+
+resource "aws_route53_record" "mongodb" {
+  zone_id = local.zone_id
+  name    = "mongodb-${var.environment}.${var.domain_name}" 
+  type    = "A"
+  ttl     = 1
+  records = [aws_instance.mongodb.private_ip]
+  allow_overwrite = true
+}
