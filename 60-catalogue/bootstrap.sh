@@ -2,7 +2,7 @@
 
 sudo dnf install ansible -y
 component=$1
-environment=$2
+env=$2
 
 REPO_URL=https://github.com/akhilnaidu1997/ansible-roboshop-roles-tf.git
 REPO_DIR=/opt/ansible
@@ -24,4 +24,4 @@ else
     cd $REPO_MAIN
 fi
 
-ansible-playbook -e component=$component -e environment=$environment main.yaml
+ansible-playbook -e component=$component -e env=$env main.yaml
