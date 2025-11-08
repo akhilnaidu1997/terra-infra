@@ -85,3 +85,13 @@ resource "aws_security_group_rule" "catalogue-mongodb" {
   security_group_id = local.mongodb
   source_security_group_id =local.catalogue
 }
+
+resource "aws_security_group_rule" "frontend-backend_alb" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  #cidr_blocks       = [aws_vpc.example.cidr_block]
+  security_group_id = local.backend_alb_id
+  source_security_group_id =local.frontend
+}

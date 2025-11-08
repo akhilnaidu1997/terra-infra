@@ -10,4 +10,5 @@ locals {
   catalogue = data.aws_ssm_parameter.catalogue.value
   vpc_id = data.aws_ssm_parameter.vpc_id.value
   listener_arn = data.aws_ssm_parameter.listener_arn.value
+  zone_id = data.aws_route53_zone.zone.zone_id
 }

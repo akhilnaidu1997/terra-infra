@@ -29,3 +29,7 @@ data "aws_ssm_parameter" "vpc_id" {
 data "aws_ssm_parameter" "listener_arn" {
   name = "/${var.project}/${var.environment}/listener_arn"
 }
+data "aws_route53_zone" "zone" {
+  name         = "daws86s-akhil.shop"
+  private_zone = false
+}

@@ -19,3 +19,6 @@ data "aws_ssm_parameter" "mysql" {
 data "aws_ssm_parameter" "catalogue" {
   name = "${var.project}-${var.environment}-catalogue"
 }
+data "aws_ssm_parameter" "frontend" {
+  name = "${var.project}-${var.environment}-frontend"
+}
