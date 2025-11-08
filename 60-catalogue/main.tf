@@ -145,7 +145,6 @@ resource "aws_autoscaling_policy" "backend" {
   name                   = "${var.project}-${var.environment}"
   scaling_adjustment     = 2
   adjustment_type        = "ChangeInCapacity"
-  cooldown               = 100
   autoscaling_group_name = aws_autoscaling_group.bar.name
   policy_type = "TargetTrackingScaling"
   target_tracking_configuration {
