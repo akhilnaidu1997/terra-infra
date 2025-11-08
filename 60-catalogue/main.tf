@@ -87,7 +87,7 @@ resource "aws_lb_target_group" "health_check_catalogue" {
    timeout = 5
    healthy_threshold = 3
    unhealthy_threshold = 3
-   matcher = 200-299
+   matcher = "200-299"
  }
 }
 
@@ -147,6 +147,7 @@ resource "aws_autoscaling_policy" "backend" {
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 100
   autoscaling_group_name = aws_autoscaling_group.bar.name
+  policy_type = "TargetTrackingScaling"
   target_tracking_configuration {
     predefined_metric_specification {
       predefined_metric_type = "ASGAverageCPUUtilization"
