@@ -58,7 +58,7 @@ resource "aws_launch_template" "catalogue" {
   name = "catalogue-template"
   image_id = aws_ami_from_instance.catalogue.id
   instance_type = "t2.micro"
-  vpc_security_group_ids = [local.vpc_id]
+  vpc_security_group_ids = [local.catalogue]
   
 
   tag_specifications {
