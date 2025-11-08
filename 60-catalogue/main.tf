@@ -122,10 +122,17 @@ resource "aws_autoscaling_group" "bar" {
   vpc_zone_identifier       = [local.private[0],local.private[1]]
 
 
-  tag {
-    key                 = "ALB"
-    value               = "Backend"
-    propagate_at_launch = true
+  dynamic "tag" {
+    for_each = merge(
+    local.common_tags,{
+        Name = "${local.common_name}-catalogue"
+    }
+  )
+    content {
+      key                 = each.key
+      value               = each.value
+      propagate_at_launch = true
+    }
   }
 
   timeouts {
