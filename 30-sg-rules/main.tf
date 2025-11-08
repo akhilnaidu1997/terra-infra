@@ -95,3 +95,12 @@ resource "aws_security_group_rule" "frontend-backend_alb" {
   security_group_id = local.backend_alb_id
   source_security_group_id =local.frontend
 }
+resource "aws_security_group_rule" "bastion-catalogueb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  #cidr_blocks       = [aws_vpc.example.cidr_block]
+  security_group_id = local.catalogue
+  source_security_group_id =local.bastion
+}

@@ -153,11 +153,3 @@ resource "aws_autoscaling_policy" "backend" {
     target_value = 75.0
   }
 }
-
-resource "aws_route53_record" "catalogue" {
-  zone_id = local.zone_id
-  name    = "catalogue.backend-alb-${var.environment}.${var.domain_name}"
-  type    = "A"
-  ttl     = 1
-  records = [aws_instance.catalogue.private_ip]
-}
