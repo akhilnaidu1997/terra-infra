@@ -1,5 +1,5 @@
 resource "aws_lb" "backend" {
-  name               = var.albname
+  name               = local.common_name
   internal           = false
   load_balancer_type = "application"
   security_groups    = [local.sg_id]

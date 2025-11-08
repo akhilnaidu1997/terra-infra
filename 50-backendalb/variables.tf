@@ -4,10 +4,6 @@ variable "project" {
 variable "environment" {
     default = "dev"
 }
-variable "albname" {
-    default = "backend_alb"
-  
-}
 variable "alb_tags" {
     default = {}
 }
