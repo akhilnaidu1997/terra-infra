@@ -6,4 +6,5 @@ locals {
     environment = var.environment
   }
   common_name = "${var.project}-${var.environment}-${var.alb_name}"
+  zone_id = data.aws_route53_zone.zone.id
 }

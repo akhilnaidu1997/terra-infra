@@ -11,3 +11,6 @@ variable "alb_name" {
 variable "alb_tags" {
     default = {}
 }
+variable "domain_name" {
+    default = "daws86s-akhil.shop"
+}

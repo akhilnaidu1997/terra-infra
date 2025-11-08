@@ -4,3 +4,7 @@ data "aws_ssm_parameter" "sg_id" {
 data "aws_ssm_parameter" "private_subnets" {
   name = "${var.project}-${var.environment}-private"
 }
+data "aws_route53_zone" "zone" {
+  name         = "daws86s-akhil.shop"
+  private_zone = false
+}

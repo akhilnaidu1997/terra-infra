@@ -78,8 +78,8 @@ resource "aws_security_group_rule" "catalogue-backendalb" {
 
 resource "aws_security_group_rule" "catalogue-mongodb" {
   type              = "ingress"
-  from_port         = 22
-  to_port           = 22
+  from_port         = 27017
+  to_port           = 27017
   protocol          = "tcp"
   #cidr_blocks       = [aws_vpc.example.cidr_block]
   security_group_id = local.mongodb

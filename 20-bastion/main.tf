@@ -4,6 +4,7 @@ resource "aws_instance" "example" {
   subnet_id     = local.public_subnet[0]
   vpc_security_group_ids = [ data.aws_ssm_parameter.bastion_sg.value ]
   iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
+  user_data = file("bastion.sh")
 
   root_block_device {
     volume_size = 50
@@ -19,31 +20,6 @@ resource "aws_instance" "example" {
   )
 }
 
-resource "terraform_data" "bastion" {
-  triggers_replace = [
-    aws_instance.example.id
-  ]
-  
-  connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    password = "DevOps321"
-    host     = aws_instance.example.public_ip
-   }
-
-    provisioner "file" {
-        source = "bastion.sh"
-        destination = "/tmp/bastion.sh"
-    }
-
-    provisioner "remote-exec" {
-        inline = [ 
-            "sudo chmod +x /tmp/bastion.sh",
-            "sudo sh /tmp/bastion.sh"
-         ] 
-    }
-
-}
 
 resource "aws_iam_role" "ec2_admin_role" {
   name = "ec2-admin-role"
