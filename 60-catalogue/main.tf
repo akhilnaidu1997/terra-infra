@@ -115,6 +115,7 @@ resource "aws_autoscaling_group" "bar" {
   health_check_type         = "ELB"
   desired_capacity          = 1
   force_delete              = true
+  target_group_arns = [ aws_lb_target_group.health_check_catalogue.arn]
   launch_template {
     id      = aws_launch_template.catalogue.id
     version = "$Latest"
