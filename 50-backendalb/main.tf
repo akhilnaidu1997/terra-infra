@@ -1,6 +1,6 @@
 resource "aws_lb" "backend" {
   name               = local.common_name
-  internal           = false
+  internal           = true
   load_balancer_type = "application"
   security_groups    = [local.sg_id]
   subnets            = local.private_subnets
@@ -38,7 +38,7 @@ resource "aws_route53_record" "backend_alb" {
 
   alias {
     name                   = aws_lb.backend.dns_name
-    zone_id                = local.zone_id
+    zone_id                = aws_lb.backend.zone_id
     evaluate_target_health = true
   }
 }
