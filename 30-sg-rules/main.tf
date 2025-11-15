@@ -1,7 +1,7 @@
 resource "aws_security_group_rule" "bastion-alb" {
   type              = "ingress"
-  from_port         = 22
-  to_port           = 22
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   #cidr_blocks       = [aws_vpc.example.cidr_block]
   security_group_id = local.backend_alb_id
